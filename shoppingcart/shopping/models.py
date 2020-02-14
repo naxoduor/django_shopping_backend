@@ -9,8 +9,8 @@ class department(models.Model):
         return self.name
     
     class Meta:
-        verbose_name_plural="department"
-
+        db_table = "department"
+        
 class category(models.Model):
     category_id = models.AutoField(auto_created=True,primary_key=True)
     department = models.ForeignKey(department, on_delete=models.CASCADE)
@@ -21,7 +21,7 @@ class category(models.Model):
         return self.name
     
     class Meta:
-        verbose_name_plural="category"
+        db_table = "category"
         
 class product(models.Model):
     product_id = models.AutoField(auto_created=True,primary_key=True)
@@ -38,14 +38,14 @@ class product(models.Model):
         return self.name
     
     class Meta:
-        verbose_name_plural="product"
+        db_table = "product"
         
 class product_category(models.Model):
     product = models.ForeignKey(product,on_delete=models.CASCADE)
     category = models.ForeignKey(category, on_delete=models.CASCADE)
     
     class Meta:
-        verbose_name_plural="product_category"
+        db_table = "product_category"
         
 class attribute(models.Model):
     attribute_id = models.AutoField(primary_key=True)
@@ -55,7 +55,7 @@ class attribute(models.Model):
         return self.name
     
     class Meta:
-        verbose_name_plural="attribute"
+        db_table = "attribute"
         
 class attribute_value(models.Model):
     attribute_value_id = models.AutoField(auto_created=True,primary_key=True)
@@ -66,8 +66,7 @@ class attribute_value(models.Model):
         return self.value
     
     class Meta:
-        verbose_name_plural="attribute_value"
-
+        db_table = "attribute_value"
 
 class product_attribute(models.Model):
     product = models.ForeignKey(product,models.CASCADE)
@@ -77,7 +76,7 @@ class product_attribute(models.Model):
         return self.product_id
     
     class Meta:
-        verbose_name_plural="product_attribute"
+        db_table = "product_attribute"
     
 class shopping_cart(models.Model):
     item_id = models.CharField(max_length=255,primary_key=True)
@@ -92,7 +91,7 @@ class shopping_cart(models.Model):
         return self.attributes
     
     class Meta:
-        verbose_name_plural="shopping_cart"
+        db_table = "shopping_cart"
         
 class shipping_region(models.Model):
     shipping_region_id = models.AutoField(auto_created=True,primary_key=True)
@@ -102,7 +101,7 @@ class shipping_region(models.Model):
         return self.shipping_region
     
     class Meta:
-        verbose_name_plural="shipping_region"
+        db_table = "shipping_region"
 
 class customer(models.Model):
     customer_id = models.AutoField(auto_created=True,primary_key=True)
@@ -125,7 +124,7 @@ class customer(models.Model):
         return self.name
     
     class Meta:
-        verbose_name_plural="customer"
+        db_table = "customer"
         
 class shipping(models.Model):
     shipping_id = models.AutoField(auto_created=True,primary_key=True)
@@ -137,7 +136,7 @@ class shipping(models.Model):
         return self.shipping_type
     
     class Meta:
-        verbose_name_plural="shipping"
+        db_table = "shipping"
 
 class tax(models.Model):
     tax_id = models.AutoField(auto_created=True,primary_key=True)
@@ -148,7 +147,7 @@ class tax(models.Model):
         return self.tax_type
     
     class Meta:
-        verbose_name_plural="tax"
+        db_table = "tax"
 
         
 class orders(models.Model):
@@ -168,7 +167,7 @@ class orders(models.Model):
         return self.order_id
     
     class Meta:
-        verbose_name_plural="orders"
+        db_table = "orders"
     
 class order_detail(models.Model):
     item_id = models.AutoField(auto_created=True,primary_key=True)
@@ -183,10 +182,8 @@ class order_detail(models.Model):
         return self.product_name
     
     class Meta:
-        verbose_name_plural="order_detail"
+        db_table = "order_detail"
     
-        
-        
 class audit(models.Model):
     audit_id = models.AutoField(auto_created=True,primary_key=True)
     orders = models.ForeignKey(orders,on_delete=models.CASCADE)
@@ -198,7 +195,7 @@ class audit(models.Model):
         return self.code
     
     class Meta:
-        verbose_name_plural="audit"
+        db_table = "audit"
         
 class review(models.Model):
     review_id = models.AutoField(auto_created=True,primary_key=True)
@@ -212,4 +209,4 @@ class review(models.Model):
         return self.code
     
     class Meta:
-        verbose_name_plural="review"
+        db_table = "review"

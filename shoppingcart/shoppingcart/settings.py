@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'shoppingcart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'djangoworks17',
+        'NAME': 'djangoworks18',
         'HOST': '127.0.0.1',
         'PORT': 3306,
         'USER': 'root',
