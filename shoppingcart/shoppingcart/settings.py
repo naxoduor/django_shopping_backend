@@ -86,6 +86,7 @@ DATABASES = {
 }
 
 
+
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -105,6 +106,26 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    )
+}
+
+import datetime
+JWT_AUTH={
+    
+    'JWT_VERIFY': False,
+    'JWT_VERIFY_EXPIRATION': True,
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(seconds=3000),
+    
+    'JWT_ALLOW_REFRESH_EXPIRTION_DELTA': datetime.timedelta(days=7),
+    
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 

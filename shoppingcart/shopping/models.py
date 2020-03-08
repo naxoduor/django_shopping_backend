@@ -103,9 +103,11 @@ class shipping_region(models.Model):
     class Meta:
         db_table = "shipping_region"
 
+
 class customer(models.Model):
     customer_id = models.AutoField(auto_created=True,primary_key=True)
     name = models.CharField(max_length=50)
+    username = models.CharField(max_length=100,default="naxoduor")
     email = models.CharField(max_length=100)
     password = models.CharField(max_length=200)
     credit_card = models.TextField(null=True,blank=True)
@@ -115,16 +117,18 @@ class customer(models.Model):
     region = models.CharField(max_length=100,null=True,blank=True)
     postal_code = models.CharField(max_length=100,null=True,blank=True)
     country = models.CharField(max_length=100,null=True,blank=True)
-    shipping_region = models.ForeignKey(shipping_region,on_delete=models.CASCADE)
+    shipping_region = models.ForeignKey(shipping_region,on_delete=models.CASCADE,null=True)
     day_phone = models.CharField(max_length=100,null=True,blank=True)
     eve_phone = models.CharField(max_length=100,null=True,blank=True)
     mob_phone = models.CharField(max_length=100,null=True,blank=True)
     
     def __str__(self):
-        return self.name
+        return '%s %s %s %s' % (self.name, self.email, self.password, self.username)
     
     class Meta:
         db_table = "customer"
+
+
         
 class shipping(models.Model):
     shipping_id = models.AutoField(auto_created=True,primary_key=True)

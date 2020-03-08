@@ -13,5 +13,8 @@ urlpatterns = [
     path('categories/totalitems/<int:id>/', views.countProductsInCategory),
     path('categories/post/', views.handlePostRequest),
     path('shoppingcart/generateUniqueId', views.generateUniqueId),
-    path('shoppingcart/<slug:cart_id>',views.getCartItems)
+    path('shoppingcart/<slug:cart_id>',views.getCartItems),
+    path('shoppingcart/add/',views.addProductToCart),
+    path('customers/',views.createCustomer),
+    path('customers/login/', views.login_user)
 ]
